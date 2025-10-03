@@ -14,7 +14,30 @@
   </div>
   <button id="buy-button">Inquire to buy</button>
 
-  <!-- Desktop preview modal removed; information will be shown as an overlay below the opened book in desktop view -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" data-close="preview">&times;</span>
+      <div class="modal-header">
+        <h2 id="modal-title"></h2>
+        <div class="modal-subheader">
+          <span id="modal-pages"></span>
+          <span id="modal-binding"></span>
+          <span id="modal-price"></span>
+        </div>
+        <p id="modal-details"></p>
+      </div>
+      <div class="flipview">
+        <div class="page-container">
+          <span class="arrow left-arrow">&#8249;</span>
+          <img id="flip-left" src="" alt="Left page">
+        </div>
+        <div class="page-container">
+          <span class="arrow right-arrow">&#8250;</span>
+          <img id="flip-right" src="" alt="Right page">
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div id="select-modal" class="modal hidden">
     <div class="modal-content select-mode">
@@ -27,9 +50,8 @@
     </div>
   </div>
 
-  <!-- New desktop info container: will be positioned below the opened book with white text -->
-  <div id="book-info-overlay" class="hidden">
-    <div id="book-info-content"></div>
+  <div id="blackout-overlay" class="hidden">
+    <h1 id="blackout-title"></h1>
   </div>
 
   <script type="importmap">
