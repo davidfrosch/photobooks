@@ -48,12 +48,32 @@ html,body { height: 100%; width: 100%; font-family: Inter, system-ui, -apple-sys
 /* Desktop: constrain overlay images so they never exceed viewport height and two-up fits */
 @media (min-width: 769px) {
 	/* Single image (mobile overlay used on desktop too) */
-	#mobile-overlay img { max-height: 100vh; height: auto; width: auto; max-width: 90vw; }
+	/* Strong constraints to override inline JS sizing and avoid upscaling */
+	#mobile-overlay img {
+		/* never taller than viewport */
+		max-height: 100vh !important;
+		height: auto !important;
+		/* don't force a larger width than the image's intrinsic size */
+		width: auto !important;
+		/* allow plenty of horizontal room but don't force upscaling */
+		max-width: 90vw !important;
+		object-fit: contain !important;
+		display: block;
+		margin: 0 auto;
+	}
 
 	/* Two-up wrapper: make images sit side-by-side and each take up to ~48% width, but never exceed viewport height */
 	.two-up-wrap { display:flex; gap:12px; align-items:center; justify-content:center; }
-	.two-up-wrap img { max-height: calc(100vh - 120px); /* leave room for header/controls */
-										 height: auto; width: auto; max-width: 48vw; }
+		.two-up-wrap img {
+			/* cap height to viewport (leave room for UI chrome) and prevent JS from forcing a bigger size */
+			max-height: calc(100vh - 120px) !important; /* leave room for header/controls */
+			height: auto !important;
+			width: auto !important;
+			max-width: 48vw !important;
+			object-fit: contain !important;
+			display: block;
+			margin: 0 auto;
+		}
 }
 
 @media (max-width:768px) { .flipview { height:48vh; } .modal-content { width:92vw; max-height:70vh; } .modal-content.select-mode { width:92vw; } }
