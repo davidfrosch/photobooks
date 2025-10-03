@@ -446,7 +446,7 @@ function init() {
     const subject = encodeURIComponent('Inquiry about books');
     const titles = checked.map(i => (books[i] && books[i].title) ? books[i].title : `Book ${i+1}`);
     // use real newlines in the message body and then URI-encode once
-    const bodyText = 'I am interested in the following books:\n' + titles.join('\n');
+    const bodyText = 'Hey David! I am interested in the following books:\n' + titles.join('\n');
     const body = encodeURIComponent(bodyText);
     window.location.href = `mailto:distortbooking+books@gmail.com?subject=${subject}&body=${body}`;
     selectModal.classList.add('hidden');
