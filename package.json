@@ -1,0 +1,9 @@
+{
+  "name": "david-frisch-book-shop",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "npx http-server -c-1 . 8080"
+  },
+  "devDependencies": {}
+}
