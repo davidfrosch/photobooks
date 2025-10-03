@@ -65,9 +65,9 @@ function escapeHtml(str) {
 }
 
 const books = [
-  { cover: 'images/book1-cover.jpg', pages: 10, title: 'David Frisch - Thank You', description: 'A concise collection of photographs and essays reflecting on gratitude and everyday moments.', binding: 'Hardcover', price: '€19.99' },
-  { cover: 'images/book2-cover.jpg', pages: 10, title: 'David Frisch - Impressions', description: 'A selection of impressions and studies from 2015–2021.', binding: 'Softcover', price: '€24.99' },
-  { cover: 'images/book3-cover.jpg', pages: 10, title: 'Appalachia Roadtrip', description: 'A photographic journey through small towns and landscapes.', binding: 'Paperback', price: '€22.50' }
+  { cover: 'images/book1-cover.jpg', pages: 172, title: 'David Frisch - Thank You', description: 'A caleidoscopice perspective.', binding: 'A4 - Hardcover', price: '€20' },
+  { cover: 'images/book2-cover.jpg', pages: 126, title: 'David Frisch - Impressions', description: 'Time is slipping by.', binding: 'A4 - Hardcover', price: '€15' },
+  { cover: 'images/book3-cover.jpg', pages: 336, title: 'David L. & Vinzenz K. - Appalachia Roadtrip', description: 'Documenting a road trip through rural Appalachia.', binding: 'A5 - Hardcover', price: '€15' }
 ];
 
 const PAGE_WIDTH = 1.9; // width of a single page plane
