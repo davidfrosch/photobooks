@@ -65,7 +65,7 @@ function escapeHtml(str) {
 }
 
 const books = [
-  { cover: 'images/book1-cover.jpg', pages: 172, title: 'David Frisch - Thank You', description: 'A caleidoscopice perspective.', binding: 'A4 - Hardcover', price: '€20' },
+  { cover: 'images/book1-cover.jpg', pages: 172, title: 'David Frisch - Thank You', description: 'A kaleidoscopic perspective.', binding: 'A4 - Hardcover', price: '€20' },
   { cover: 'images/book2-cover.jpg', pages: 126, title: 'David Frisch - Impressions', description: 'Time is slipping by.', binding: 'A4 - Hardcover', price: '€15' },
   { cover: 'images/book3-cover.jpg', pages: 336, title: 'David L. & Vinzenz K. - Appalachia Roadtrip', description: 'Documenting a road trip through rural Appalachia.', binding: 'A5 - Hardcover', price: '€15' }
 ];
