@@ -45,6 +45,17 @@ html,body { height: 100%; width: 100%; font-family: Inter, system-ui, -apple-sys
 /* Ensure overlay DOM images are shown with normal orientation on desktop */
 #mobile-overlay img, .two-up-wrap img { transform: scaleX(1) !important; image-orientation: from-image; }
 
+/* Desktop: constrain overlay images so they never exceed viewport height and two-up fits */
+@media (min-width: 769px) {
+	/* Single image (mobile overlay used on desktop too) */
+	#mobile-overlay img { max-height: 100vh; height: auto; width: auto; max-width: 90vw; }
+
+	/* Two-up wrapper: make images sit side-by-side and each take up to ~48% width, but never exceed viewport height */
+	.two-up-wrap { display:flex; gap:12px; align-items:center; justify-content:center; }
+	.two-up-wrap img { max-height: calc(100vh - 120px); /* leave room for header/controls */
+										 height: auto; width: auto; max-width: 48vw; }
+}
+
 @media (max-width:768px) { .flipview { height:48vh; } .modal-content { width:92vw; max-height:70vh; } .modal-content.select-mode { width:92vw; } }
 
 /* Position buy button bottom-center on mobile for easier access */
