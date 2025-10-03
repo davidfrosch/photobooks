@@ -400,6 +400,8 @@ function init() {
   const selectForm = document.getElementById('select-form');
   const selectSend = document.getElementById('select-send');
   const selectClose = selectModal ? selectModal.querySelector('.close') : null;
+  const previewModal = document.getElementById('modal');
+  const previewClose = previewModal ? previewModal.querySelector('.close[data-close="preview"]') : null;
   if (buyBtn) buyBtn.addEventListener('click', () => {
     // populate form
     if (!selectForm || !selectModal) return;
@@ -415,6 +417,20 @@ function init() {
     selectModal.classList.remove('hidden');
   });
   if (selectClose) selectClose.addEventListener('click', () => selectModal.classList.add('hidden'));
+  // wire preview modal close button / backdrop
+  if (previewClose) previewClose.addEventListener('click', () => {
+    if (previewModal) previewModal.classList.add('hidden');
+    // if we were in an open reading state, close the book preview
+    if (openMode && selected) {
+      closeBook(selected);
+    }
+  });
+  if (previewModal) previewModal.addEventListener('click', (ev) => {
+    if (ev.target === previewModal) {
+      previewModal.classList.add('hidden');
+      if (openMode && selected) closeBook(selected);
+    }
+  });
   // clicking on the backdrop should close the modal
   if (selectModal) selectModal.addEventListener('click', (ev) => {
     if (ev.target === selectModal) selectModal.classList.add('hidden');
@@ -429,8 +445,10 @@ function init() {
     // compose mailto using book titles when available
     const subject = encodeURIComponent('Inquiry about books');
     const titles = checked.map(i => (books[i] && books[i].title) ? books[i].title : `Book ${i+1}`);
-    const body = encodeURIComponent('I am interested in the following books:%0D%0A' + titles.join('%0D%0A'));
-  window.location.href = `mailto:distortbooking+books@gmail.com?subject=${subject}&body=${body}`;
+    // use real newlines in the message body and then URI-encode once
+    const bodyText = 'I am interested in the following books:\n' + titles.join('\n');
+    const body = encodeURIComponent(bodyText);
+    window.location.href = `mailto:distortbooking+books@gmail.com?subject=${subject}&body=${body}`;
     selectModal.classList.add('hidden');
   });
 }
